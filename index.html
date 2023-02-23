@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <script defer src="app.js"></script>
+    <style>
+        body{
+            height: 100vh;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+            background-color: #FBAB7E;
+background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+        }
+        table{
+            border-collapse: collapse;
+            background-color: white;
+            border-color: #d9d5d3;
+            border-width: 2px;
+            /* border-radius: 5px; */
+        }
+        thead{
+            padding: 5px;
+        }
+        td{
+            padding: 5px;
+            text-align: center;
+        }
+        th > h4{
+            text-transform: uppercase;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="table-container">
+        <table id ="tab" border="1px">
+            <thead id="thead">
+                
+            </thead>
+            <tbody id="tbdy">
+
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
