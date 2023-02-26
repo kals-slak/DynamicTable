@@ -14,57 +14,35 @@ const jumpTo= (e)=>{
 
 const pageUp = ()=>{
     let size = parseInt(document.getElementById('pagesize').value);
-    pageStart+= size;
-    pageEnd+= size;
-    document.getElementById('previous').disabled= false;
-    if(pageEnd>=sortlst.length){
-        document.getElementById('next').disabled=true;
-       
-    }
-    else{
-        document.getElementById('next').disabled= false;
-    }
-
-    // console.log(pageStart+" ,, "+pageEnd+" "+size);
-    if(pageEnd> sortlst.length){
-        // pageStart-=size;
-        pageEnd = sortlst.length;
-    }
-    if(pageStart>sortlst.length)pageStart-= size;
-    if(pageStart>(bte-1)*size && pageEnd<(bte*size)){
-        bte++;
+    pageStart= pageEnd;
+    pageEnd= pageStart + size;
+    if((bte < (sortlst.length/size)) &&  pageStart >(size*5/2)){
         bts++;
+        bte++;
     }
-    // console.log(pageStart+" ,, "+pageEnd+" "+size);
     constructTable(sortlst,pageStart,pageEnd);
 }
 const pageDown = ()=>{
     let size = parseInt(document.getElementById('pagesize').value);
-    pageStart-= size;
-    pageEnd= pageStart+ size;
-    document.getElementById('next').disabled= false;
-    if(pageStart<=0){
-        document.getElementById('previous').disabled=true;   
-        pageStart =0;
-        pageEnd= size;
-    }
-    else{
-        document.getElementById('previous').disabled= false;
-    }
-    if(pageStart==(bts-1)*size){
+    if((bts>0) &&  pageStart >(size*5/2)){
         bts--;
-        if(!(bts<0))bte--;
+        bte--;
+        console.log(bts+",,"+bte);
     }
+
+    pageEnd= pageStart;
+    pageStart= pageEnd - size;
     constructTable(sortlst,pageStart,pageEnd);
 }
 
 const updateSize= ()=>{
     let s= parseInt(document.getElementById('pagesize').value);
     pageStart =0;
-    // if(pageStart<0)pageStart=0;
-
     pageEnd= pageStart+s;
     if(pageEnd>sortlst.length)pageEnd= sortlst.length;
+    bts=0;
+    bte= Math.ceil(sortlst.length/s);
+    bte= (bte>5)? 5: bte;
     constructTable(sortlst,pageStart,pageEnd);
 }
 
@@ -120,20 +98,14 @@ const searchCol = function(event){
     }
     else{
         filtered = lst.filter(obj=> (obj[col]+"").toLowerCase().includes(val));
-        // for(let i=0;i<lst.length;i++){
-        //     let obj = lst[i][col]+"";
-        //     if(((obj.toLowerCase()).includes(val))){
-        //         filtered.push(lst[i]);
-        //     }
-        // }
-
     }
     sortlst= filtered;
     pageStart=0;
-    pageEnd= parseInt(document.getElementById('pagesize').value);
+    let size= parseInt(document.getElementById('pagesize').value);
+    pageEnd= size;
     if(pageEnd>filtered.length)pageEnd= filtered.length;
     bts=0;
-    bte= filtered.length;
+    bte= Math.ceil(filtered.length/size);
     if(bte>5)bte=5;
     constructTable(filtered,pageStart,pageEnd);
 }
@@ -165,8 +137,8 @@ const constructHead = function(lst){
         let optsort= document.createElement('option');
         optsearch.innerHTML= keys[i];
         optsort.innerHTML= keys[i];
-        h4.dataset.order= 'desc';
-        h4.dataset.col= keys[i];
+        // h4.dataset.order= 'desc';
+        // h4.dataset.col= keys[i];
         h4.innerHTML= keys[i];
        
         hh.appendChild(h4);
@@ -181,17 +153,12 @@ const constructTable = function(lst,start,end){
     let div= document.getElementById('bottomButtons');
     div.innerHTML='';
     let size= parseInt(document.getElementById('pagesize').value);
-    let buttonCount= lst.length/size;
-    // console.log(buttonCount);
-    if(buttonCount<=1){
-        document.getElementById('previous').disabled= true;
-        document.getElementById('next').disabled= true;
-    }
-    else{
-        document.getElementById('next').disabled= false;
-    }
+    let buttonCount= Math.ceil(lst.length/size);
+    console.log(buttonCount);
+    
     if(buttonCount<bte)bte= buttonCount;
     if(bts<0)bts=0;
+    
     // console.log(buttonCount+" "+size);
     for(let i=bts;i<bte;i++){
         let button = document.createElement('button');
@@ -201,13 +168,15 @@ const constructTable = function(lst,start,end){
         if(((i)*size===pageStart)){
             button.style.backgroundColor= '#4285F4';
             button.style.color= 'white';
+            if(i==buttonCount-1)document.getElementById('next').disabled= true;
+            else document.getElementById('next').disabled= false;
+            if(i==0)document.getElementById('previous').disabled= true;
+            else document.getElementById('previous').disabled= false;
         }    
         button.innerHTML = i+1;
         button.addEventListener('click',jumpTo);
         div.appendChild(button);
     }
-
-
     // console.log(start+" "+end);
     table.innerHTML = '';
     if(end>lst.length) end= lst.length;
