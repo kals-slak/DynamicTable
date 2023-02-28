@@ -6,85 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Table</title>
     <script defer src="app.js"></script>
-    <style>
-        body{
-            min-height: 100vh;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-            background-color: #f4e4db;
-            background-image: linear-gradient(62deg, #faf9f8 0%, #ffffff 100%);
-        }
-        table{
-            border-collapse: collapse;
-            background-color: white;
-            border: 1px solid rgb(185, 183, 183);
-
-            width: 100%;
-            /* border-radius: 5px; */
-        }
-        thead{
-            padding: 5px;
-            border: 1px solid rgb(185, 183, 183);
-        }
-        td{
-            padding: 5px;
-            text-align: center;
-            border: 1px solid rgb(185, 183, 183);
-        }
-        th{
-            border: 1px solid rgb(185, 183, 183);
-        }
-        th > h4{
-            text-transform: uppercase;
-            padding: 15px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-        }
-        #header-1{
-            display: flex;
-            justify-content: space-between;
-            flex-direction: row;
-            align-items: center;
-            width: 100%;
-            padding: 4px;
-            border: 1px solid rgb(185, 183, 183);
-            border-bottom: none;
-        }
-        #header-1 > div{
-            display: flex;
-            align-items: center;
-        }
-        #header-1 > div > *{
-            margin: 5px;
-        }
-
-        #sortBut{
-            height: 30px;
-            width: 30px;
-        }
-        #table-container{
-            width: 70%;
-            
-        }
-        select{
-            height: 30px;
-            width: 80px;
-        }
-        input{
-            height: 28px;
-        }
-        .bn {
-           width: 80px;
-           height: 30px;
-        }
-       
-       
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="table-container">
-        <div style="display: flex; justify-content: space-between;background-color: white;">
+        <div class="TableTop" >
             <div  id="header-1">
                 <div >
                     <h4>Show </h4>
@@ -119,7 +45,7 @@
 
             </tbody>
         </table>
-        <div style="display: flex; justify-content: center;background-color: white; padding: 10px;border: 1px solid rgb(185, 183, 183);">
+        <div class="TableBottom">
             <button onclick="pageDown()" class="bn" id="previous">Previous</button>
             <div id="bottomButtons">
 

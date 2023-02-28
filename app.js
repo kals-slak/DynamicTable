@@ -167,6 +167,7 @@ const constructTable = function(lst,start,end){
         button.style.height= '30px';
         if(((i)*size===pageStart)){
             button.style.backgroundColor= '#4285F4';
+            button.style.boxShadow= '-1px 19px 28px -10px rgba(0,0,0,0.46)';
             button.style.color= 'white';
             if(i==buttonCount-1)document.getElementById('next').disabled= true;
             else document.getElementById('next').disabled= false;

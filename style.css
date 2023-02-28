@@ -1,0 +1,89 @@
+:root{
+    --borderstyle: 1px solid rgb(185, 183, 183);
+}
+
+body{
+    min-height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+    background-image: linear-gradient(62deg, #4adbe5 0%, #4c60f4 100%);
+}
+table{
+    border-collapse: collapse;
+    background-color: white;
+    width: 100%;
+}
+
+td{
+    padding: 5px;
+    text-align: center;
+    border: var(--borderstyle);
+}
+th{
+    border: var(--borderstyle);
+}
+th > h4{
+    text-transform: uppercase;
+    padding: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#header-1{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 4px;
+    border: var(--borderstyle);
+    border-bottom: none;
+}
+#header-1 > div{
+    display: flex;
+    align-items: center;
+}
+#header-1 > div > *{
+    margin: 5px;
+}
+
+#sortBut{
+    height: 30px;
+    width: 30px;
+}
+#table-container{
+    width: 70%;
+}
+select{
+    height: 30px;
+    width: 80px;
+}
+input{
+    height: 28px;
+}
+.bn {
+   width: 80px;
+   height: 30px;
+}
+
+.TableBottom{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 10px;
+    border: var(--borderstyle);
+}
+
+.TableTop{
+    display: flex; 
+    justify-content: space-between;
+    background-color: white;
+}
+       
+button{
+    background-color: white;
+    border: none;
+}
+button:hover:enabled{
+    background-color: rgb(215, 213, 210);
+}
