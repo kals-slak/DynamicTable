@@ -189,7 +189,13 @@ const constructTable = function(lst,start,end){
             hh.appendChild(rr);
         }
         table.appendChild(hh);            
-    }
-
+    } 
  }
 fetchData();
+// let tforwidth= document.getElementById('tab');
+//     let w= tforwidth.offsetWidth;
+//     console.log("width is: "+w);
+//     let tbw = document.getElementsByClassName('TableBottom')[0];
+//     tbw.style.width= w;
+//     let ttpw = document.getElementsByClassName('TableTop')[0];
+//     ttpw.style.width= w;
