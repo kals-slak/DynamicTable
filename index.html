@@ -10,12 +10,12 @@
 </head>
 <body>
     <div class="wrapper">
-    <div id="table-container">
+    <div class="table-container">
         <div class="TableTop" >
-            <div  id="header-1">
+            <div  class="header-1">
                 <div >
                     <h4>Show </h4>
-                    <select id="pagesize" onchange="updateSize()">
+                    <select class="pagesize" onchange="updateSize()">
                     <option selected>5</option>
                     <option>10</option>
                     <option>25</option>
@@ -24,31 +24,31 @@
                 </div>
                 <div >
                     <h4>Search By</h4>
-                    <select id="selectForSearch" onchange="searchCol()">
+                    <select class="selectForSearch" onchange="searchCol()">
                     <option>all</option>
                     </select>
-                    <input id="searchbar" onkeyup="searchCol()" placeholder="Search">
+                    <input class="searchbar" onkeyup="searchCol()" placeholder="Search">
                 </div>
                 <div>
-                    <button id="sortBut" data-order="desc" data-value="id" onclick="toggle();sortCol();">&#9650</button>
+                    <button class="sortBut" data-order="desc" data-value="id" onclick="toggle();sortCol();">&#9650</button>
                     <h4>Sort By</h4>
-                    <select id="selectForSort" onchange="sortCol()">
+                    <select class="selectForSort" onchange="sortCol()">
                         <!-- <option selected disabled>Sort By</option> -->
                     </select>
                 </div>
             </div>
         </div>
-            <table id ="tab">
-                <thead id="thead">
+            <table class ="tab">
+                <thead class="thead">
                     
                 </thead>
-                <tbody id="tbdy">
+                <tbody class="tbdy">
     
                 </tbody>
             </table>
         <div class="TableBottom">
             <button onclick="pageDown()" class="bn" id="previous">Previous</button>
-            <div id="bottomButtons">
+            <div class="bottomButtons">
 
             </div>
             <button onclick="pageUp()" class="bn" id="next">Next</button>

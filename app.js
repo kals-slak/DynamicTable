@@ -1,11 +1,11 @@
-const table = document.getElementById("tbdy");
-const thead = document.getElementById("thead");
+const table = document.getElementsByClassName("tbdy")[0];
+const thead = document.getElementsByClassName("thead")[0];
 
 var lst,sortlst,pageStart=0,pageEnd=5,bts=0,bte=5;
 
 const jumpTo= (e)=>{
     // console.log(e.target.id);
-    let size= parseInt(document.getElementById('pagesize').value);
+    let size= parseInt(document.getElementsByClassName('pagesize')[0].value);
     pageStart= (e.target.id - 1)*size;
     pageEnd = pageStart + size;
     if(pageEnd>sortlst.length)pageEnd= sortlst.length;
@@ -13,7 +13,7 @@ const jumpTo= (e)=>{
 }
 
 const pageUp = ()=>{
-    let size = parseInt(document.getElementById('pagesize').value);
+    let size = parseInt(document.getElementsByClassName('pagesize')[0].value);
     pageStart= pageEnd;
     pageEnd= pageStart + size;
     if((bte < (sortlst.length/size)) &&  pageStart >(size*5/2)){
@@ -23,7 +23,7 @@ const pageUp = ()=>{
     constructTable(sortlst,pageStart,pageEnd);
 }
 const pageDown = ()=>{
-    let size = parseInt(document.getElementById('pagesize').value);
+    let size = parseInt(document.getElementsByClassName('pagesize')[0].value);
     if((bts>0) &&  pageStart >(size*5/2)){
         bts--;
         bte--;
@@ -36,7 +36,7 @@ const pageDown = ()=>{
 }
 
 const updateSize= ()=>{
-    let s= parseInt(document.getElementById('pagesize').value);
+    let s= parseInt(document.getElementsByClassName('pagesize')[0].value);
     pageStart =0;
     pageEnd= pageStart+s;
     if(pageEnd>sortlst.length)pageEnd= sortlst.length;
@@ -48,7 +48,7 @@ const updateSize= ()=>{
 
 
 const toggle =()=>{
-    let but= document.getElementById('sortBut');
+    let but= document.getElementsByClassName('sortBut')[0];
     let inn= but.dataset.order;
     if(inn=='desc'){
         but.dataset.order= 'asc';
@@ -64,7 +64,7 @@ const sortCol = function(event){
 
     let column= '-';
     if(event!=undefined){column = event.target.value;}
-    let orderBut =  document.getElementById('sortBut');
+    let orderBut =  document.getElementsByClassName('sortBut')[0];
     let order = orderBut.dataset.order;
     if(column=='-') column= orderBut.dataset.value;
     else orderBut.dataset.value = column;
@@ -89,9 +89,9 @@ const sortCol = function(event){
 }
 
 const searchCol = function(event){
-    let val= document.getElementById('searchbar').value;
+    let val= document.getElementsByClassName('searchbar')[0].value;
     val= val.toLowerCase();
-    let col= document.getElementById('selectForSearch').value;
+    let col= document.getElementsByClassName('selectForSearch')[0].value;
     let filtered= [];
     if(col=='all'){
        filtered= lst.filter(obj => Object.keys(obj).some(key => ((obj[key]+"").toLowerCase()).includes(val)));
@@ -101,7 +101,7 @@ const searchCol = function(event){
     }
     sortlst= filtered;
     pageStart=0;
-    let size= parseInt(document.getElementById('pagesize').value);
+    let size= parseInt(document.getElementsByClassName('pagesize')[0].value);
     pageEnd= size;
     if(pageEnd>filtered.length)pageEnd= filtered.length;
     bts=0;
@@ -125,8 +125,8 @@ const fetchData =  async() => {
 const constructHead = function(lst){
     let keys= Object.keys(lst);
     // adding options in select tag
-    let ssearch = document.getElementById('selectForSearch');
-    let ssort = document.getElementById('selectForSort');
+    let ssearch = document.getElementsByClassName('selectForSearch')[0];
+    let ssort = document.getElementsByClassName('selectForSort')[0];
     ssort.addEventListener("change",sortCol);
     ssort.dataset.order= 'desc';
 
@@ -150,9 +150,9 @@ const constructHead = function(lst){
 
 const constructTable = function(lst,start,end){
     // adding buttons in pagination bottom navigation
-    let div= document.getElementById('bottomButtons');
+    let div= document.getElementsByClassName('bottomButtons')[0];
     div.innerHTML='';
-    let size= parseInt(document.getElementById('pagesize').value);
+    let size= parseInt(document.getElementsByClassName('pagesize')[0].value);
     let buttonCount= Math.ceil(lst.length/size);
     console.log(buttonCount);
     

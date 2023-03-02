@@ -30,7 +30,7 @@ th > h4{
     padding-top: 5px;
     padding-bottom: 5px;
 }
-#header-1{
+.header-1{
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -39,18 +39,18 @@ th > h4{
     padding: 4px;
     border-bottom: none;
 }
-#header-1 > div{
+.header-1 > div{
     display: flex;
     align-items: center;
 }
-#header-1 > div > *{
+.header-1 > div > *{
     margin: 5px;
 }
-#sortBut{
+.sortBut{
     height: 30px;
     width: 30px;
 }
-#table-container{
+.table-container{
     background-color: white;
     display: inline-block; 
 }
@@ -88,7 +88,7 @@ button{
 button:hover:enabled{
     background-color: rgb(215, 213, 210);
 }
-#bottomButtons{
+.bottomButtons{
     display: flex;
     flex-direction: row;
 }
